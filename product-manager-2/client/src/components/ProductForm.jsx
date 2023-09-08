@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const ProductForm = () => {
+const ProductForm = (props) => {
 	const [title, setTitle] = useState("");
 	const [price, setPrice] = useState(0);
 	const [description, setDescription] = useState("");
@@ -30,6 +30,7 @@ const ProductForm = () => {
 					setTitle("");
 					setPrice(0);
 					setDescription("");
+					props.fetchProducts();
 					if ((titleError, priceError, descriptionError)) {
 						setTitleError("");
 						setPriceError("");
@@ -41,7 +42,7 @@ const ProductForm = () => {
 	};
 
 	return (
-		<div className="card shadow w-50 mx-auto mt-3">
+		<div className="card shadow w-50 mx-auto mt-3 mb-5">
 			<div className="card-body">
 				<form onSubmit={handleSubmit}>
 					<div className="mb-3">
